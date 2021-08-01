@@ -167,7 +167,8 @@ if (savedOpts) {
   socketOptions.reconnectionDelayMax = 60000;
   socketOptions.randomizationFactor = 0.8;
 }
-let socket = io(protocol + curServer + domain, socketOptions);
+
+let socket = io(protocol + curServer + domain, {...socketOptions, localAddress: process.env.IP || '173.208.195.203'});
 
 const initialize = () => {
   // check connectivity by getting the t_address.
