@@ -168,7 +168,17 @@ if (savedOpts) {
   socketOptions.randomizationFactor = 0.8;
 }
 
-let socket = io(protocol + curServer + domain, {...socketOptions, localAddress: process.env.IP || '173.208.195.203'});
+if (process.env.IP) process.env.IP = process.env.IP.trim()
+
+const localAddress = process.env.IP || undefined
+console.log('[ALERT] -- using localAddress -->', localAddress)
+let socket;
+if (localAddress) {
+  socket = io(protocol + curServer + domain, {...socketOptions, localAddress});
+} else {
+  socket = io(protocol + curServer + domain, socketOptions);
+}
+
 
 const initialize = () => {
   // check connectivity by getting the t_address.
