@@ -9,7 +9,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setup": "node setup.js"
+    "setup": "node setup.js",
+    "start": "IP=198.100.148.59 node app.js"
   },
   "author": "Allan Dumaine for Zen Blockchain Foundation",
   "license": "MIT",
