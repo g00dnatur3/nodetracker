@@ -169,6 +169,9 @@ if (savedOpts) {
 }
 
 if (process.env.IP) process.env.IP = process.env.IP.trim()
+if (!process.env.IP) {
+  throw Error('missing required env: IP')
+}
 
 const localAddress = process.env.IP || undefined
 console.log('[ALERT] -- using localAddress -->', localAddress)
